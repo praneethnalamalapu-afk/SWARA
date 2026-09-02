@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Swara -The Sound of Emotion</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="icons/download.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <aside class="sidebar spotify-sidebar">
+    <div class="sidebar-logo">
+      <img src="icons/Swara.png" alt="Logo" style="width:110px;height:90px;">
+    </div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="sidebar-link active">Home</a>
+      <a href="#" class="sidebar-link">Playlists</a>
+      <a href="musiclibrary.html?type=artist" class="sidebar-link">Artists</a>
+      <a href="musiclibrary.html?type=album" class="sidebar-link">Albums</a>
+    </nav>
+    <div class="sidebar-library">
+      <div class="sidebar-library-title">Your Library</div>
+      <ul class="sidebar-library-list">
+        
+        
+        <div id="user-playlists-sidebar"></div>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main spotify-main">
+  <!-- Context menu and playlist popup containers -->
+  <div id="song-context-menu" class="song-context-menu" style="display:none; position:absolute; z-index:1000;"></div>
+  <div id="playlist-popup" class="playlist-popup" style="display:none; position:absolute; z-index:1100;"></div>
+    <!-- Top Bar -->
+    <header class="spotify-topbar">
+      <div class="spotify-searchbar custom-searchbar">
+        <i class="bi bi-search search-icon"></i>
+        <input type="text" id="search-bar" placeholder="What do you want to play?" autocomplete="off">
+      </div>
+      
+    </header>
+
+    <div id="search-results-container" class="search-results-spotify"></div>
+
+    <!-- Featured Playlists -->
+    <section class="spotify-section">
+      <div class="section-header">
+        <div class="spotify-section-title">IT's Trending</div>
+        <button id="show-more-trending" class="show-more-btn" style="display:none;">Show all</button>
+      </div>
+      <div class="horizontal-scroll" id="trending-section"></div>
+    </section>
+
+    <!-- Editor's Pick -->
+    <section class="spotify-section">
+      <div class="section-header">
+        <div class="spotify-section-title">Editor's Pick</div>
+        <button id="show-more-mood" class="show-more-btn" style="display:none;">Show all</button>
+      </div>
+      <div class="horizontal-scroll" id="mood-section"></div>
+    </section>
+
+    <!-- Artists -->
+    <section class="spotify-section">
+      <div class="section-header">
+        <div class="spotify-section-title">Artists</div>
+        <button id="show-more-artist" class="show-more-btn" style="display:none;">Show all</button>
+      </div>
+      <div class="horizontal-scroll" id="artist-section"></div>
+    </section>
+
+    <!-- Albums -->
+    <section class="spotify-section">
+      <div class="section-header">
+        <div class="spotify-section-title">Albums</div>
+        <button id="show-more-album" class="show-more-btn" style="display:none;">Show all</button>
+      </div>
+      <div class="horizontal-scroll" id="album-section"></div>
+    </section>
+  </main>
+
+  <!-- Right Sidebar (Queue) -->
+  <aside class="spotify-queue">
+  <div class="queue-title">Queue <button class="close-btn">&times;</button></div>
+  <div class="queue-now">Now playing</div>
+  <div class="queue-list" id="queue-list">
+    <!-- JS will fill this -->
+  </div>
+</aside>
+
+  <!-- Player Bar -->
+  <footer class="player-bar">
+    <div class="player-left">
+      <img id="now-cover" src="images/default.jpg" alt="Cover">
+      <div class="track-info">
+        <span id="now-title">Title</span>
+        <span id="now-artist">Artist</span>
+      </div>
+      <i class="bi bi-plus-circle"></i>
+    </div>
+    <div class="player-center">
+      <div class="player-controls">
+        <i id="shuffle" class="bi bi-shuffle" title="Shuffle"></i>
+        <i id="prev" class="bi bi-skip-start-fill" title="Previous"></i>
+        <i id="play-pause" class="bi bi-play-circle-fill" title="Play/Pause"></i>
+        <i id="next" class="bi bi-skip-end-fill" title="Next"></i>
+        <i id="loop" class="bi bi-repeat" title="Loop"></i>
+      </div>
+      <div class="player-progress">
+        <span id="current-time">0:00</span>
+        <input type="range" id="seek-bar" min="0" value="0">
+        <span id="total-time">0:00</span>
+      </div>
+    </div>
+    <div class="player-right">
+      <i class="bi bi-mic"></i>
+      <i class="bi bi-list"></i>
+      <i class="bi bi-pc-display"></i>
+      <i class="bi bi-volume-up"></i>
+      <input type="range" id="volume-bar" min="0" max="1" step="0.01" value="1">
+      <i class="bi bi-arrows-fullscreen"></i>
+    </div>
+  </footer>
+  <audio id="audio" preload="metadata"></audio>
+  <script src="playlist.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
